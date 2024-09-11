@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG7312_Ethekwini_Connect"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Dark Background.jpg"/>
+        </Grid.Background>
+
+
 
     </Grid>
 </Window>

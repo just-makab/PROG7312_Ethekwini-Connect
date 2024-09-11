@@ -9,4 +9,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Dark Background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Dark Background.jpg" />
+  </ItemGroup>
+
 </Project>
