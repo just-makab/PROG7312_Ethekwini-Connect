@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG7312-Ethekwini Connect", "PROG7312-Ethekwini Connect.csproj", "{2CF46FE5-AB02-464D-A65E-F6F77A86804F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CF46FE5-AB02-464D-A65E-F6F77A86804F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF46FE5-AB02-464D-A65E-F6F77A86804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF46FE5-AB02-464D-A65E-F6F77A86804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF46FE5-AB02-464D-A65E-F6F77A86804F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CE745E7-F341-479A-B783-5AA85A37869A}
+	EndGlobalSection
+EndGlobal
