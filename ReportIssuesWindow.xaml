@@ -51,33 +51,34 @@
             <TextBlock Text="REPORT AN ISSUE" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Foreground="Black" FontFamily="Dubai"/>
 
             <TextBlock Text="Title:" HorizontalAlignment="Center" Margin="0,0,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <TextBox Name="Title" Width="250" Height="30"/>
+            <TextBox Name="Title" Width="250" Height="30" TextChanged="Title_TextChanged" />
 
             <TextBlock Text="Location:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <TextBox Name="LocationTextBox" Width="250" Height="30"/>
+            <TextBox Name="LocationTextBox" Width="250" Height="30" TextChanged="LocationTextBox_TextChanged"/>
 
             <TextBlock Text="Category:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <ComboBox Name="CategoryComboBox" Width="250" Height="30">
+            <ComboBox Name="CategoryComboBox" Width="250" Height="30" SelectionChanged="CategoryComboBox_SelectionChanged">
                 <ComboBoxItem Content="Sanitation"/>
                 <ComboBoxItem Content="Roads"/>
                 <ComboBoxItem Content="Utilities"/>
             </ComboBox>
 
             <TextBlock Text="Description:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <RichTextBox Name="DescriptionRichTextBox" Width="250" Height="60"/>
+            <RichTextBox Name="DescriptionRichTextBox" Width="250" Height="60" TextChanged="DescriptionRichTextBox_TextChanged"/>
 
             <TextBlock Text="Attached Media:" HorizontalAlignment="Center" Margin="0,20,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <Image Name="ImagePreview" Width="80" Height="70" Stretch="Uniform" Margin="0,0,0,5"/>
+            <Image Name="ImagePreview" Width="80" Height="70" Stretch="Uniform" Margin="0,0,0,5"  SourceUpdated="ImagePreview_SourceUpdated" />
 
             <Button x:Name="AttachMedia" Style="{StaticResource CustomButtonStyle}" Content="Attach Media" Margin="0,10,0,0" Click="AttachMedia_Click"  ToolTip="Attach any relevant media to your report." ToolTipService.InitialShowDelay="2000"/>
 
             <Button x:Name="Submit" Style="{StaticResource CustomButtonStyle}" Content="Submit" Click="Submit_Click"/>
         </StackPanel>
 
-        <!-- Middle: Vertical ProgressBar -->
+        <!-- ProgressBar -->
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-            <ProgressBar x:Name="ProgressBar" Height="400" Width="30" Orientation="Vertical" Minimum="0" Maximum="100" Value="0"/>
-            <TextBlock x:Name="ProgressPercentageTextBlock" Text="0% completed" FontWeight="Bold" Margin="0,110,0,0"/>
+            <ProgressBar x:Name="ProgressBar" Height="400" Width="30" Orientation="Vertical" Minimum="0" Maximum="100" Value="0">
+            </ProgressBar>
+            <TextBlock x:Name="ProgressPercentageTextBlock" Text="0% completed" FontWeight="Bold" Margin="0,50,0,0"/>
         </StackPanel>
         <!-- User inserted reports -->
         <!-- Reported Issues Title -->

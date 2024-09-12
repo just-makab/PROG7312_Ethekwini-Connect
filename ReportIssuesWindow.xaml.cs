@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace PROG7312_Ethekwini_Connect
@@ -17,41 +19,27 @@ namespace PROG7312_Ethekwini_Connect
         {
             InitializeComponent();
             InitializeTooltips();
-            try
-            {
-                // Ensure the file path is correctly formatted and the image exists
-                string imagePath = @"C:\PROG7312-POE\PROG7312-Ethekwini Connect\No Image.jpg";
-
-                if (File.Exists(imagePath))
-                {
-                    BitmapImage image = new BitmapImage();
-                    image.BeginInit();
-                    image.UriSource = new Uri(imagePath);
-                    image.EndInit();
-                    ImagePreview.Source = image;
-                }
-                else
-                {
-                    MessageBox.Show("Default image not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Image Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+           
         }
 
+        // Only update progress after new image is uploaded
         private void AttachMedia_Click(object sender, RoutedEventArgs e)
         {
-            // Upload photo
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+
             if (openFileDialog.ShowDialog() == true)
             {
                 try
                 {
                     BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName));
-                    ImagePreview.Source = image;
+
+                    // Check if the new image is different from the current one
+                    if (ImagePreview.Source == null || (ImagePreview.Source as BitmapImage)?.UriSource.ToString() != image.UriSource.ToString())
+                    {
+                        ImagePreview.Source = image;
+                        UpdateProgressBar();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -59,6 +47,7 @@ namespace PROG7312_Ethekwini_Connect
                 }
             }
         }
+
 
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -97,20 +86,59 @@ namespace PROG7312_Ethekwini_Connect
             this.Close();
         }
 
+        private void Title_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void LocationTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void DescriptionRichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void ImagePreview_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+
         private void UpdateProgressBar()
         {
             int filledFields = 0;
+
             if (!string.IsNullOrEmpty(Title.Text)) filledFields++;
             if (!string.IsNullOrEmpty(LocationTextBox.Text)) filledFields++;
             if (CategoryComboBox.SelectedItem != null) filledFields++;
-            if (!string.IsNullOrEmpty(new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text)) filledFields++;
-            if (ImagePreview.Source != null) filledFields++;
+            if (!string.IsNullOrEmpty(new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text.Trim())) filledFields++;
+            if (ImagePreview.Source !=  null) filledFields++;
 
             double progress = (filledFields / 5.0) * 100;
             ProgressBar.Value = progress;
 
+            ProgressBar.Foreground = new SolidColorBrush(InterpolateColor(Colors.Red, Colors.Green, progress / 100));
+
+
             // Display percentage below progress bar
             ProgressPercentageTextBlock.Text = $"{progress}% completed";
+        }
+
+        private Color InterpolateColor(Color startColor, Color endColor, double factor)
+        {
+            byte r = (byte)((endColor.R - startColor.R) * factor + startColor.R);
+            byte g = (byte)((endColor.G - startColor.G) * factor + startColor.G);
+            byte b = (byte)((endColor.B - startColor.B) * factor + startColor.B);
+
+            return Color.FromRgb(r, g, b);
         }
 
 
@@ -120,8 +148,10 @@ namespace PROG7312_Ethekwini_Connect
             return !string.IsNullOrEmpty(Title.Text) &&
                    !string.IsNullOrEmpty(LocationTextBox.Text) &&
                    CategoryComboBox.SelectedItem != null &&
-                   !string.IsNullOrEmpty(new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text);
+                   !string.IsNullOrWhiteSpace(new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text.Trim()) &&
+                   ImagePreview.Source != null;
         }
+
 
         private void ClearForm()
         {
@@ -130,7 +160,10 @@ namespace PROG7312_Ethekwini_Connect
             LocationTextBox.Clear();
             CategoryComboBox.SelectedIndex = -1;
             DescriptionRichTextBox.Document.Blocks.Clear();
-            //ProgressBar.Value = 0;
+
+            ImagePreview.Source = null;
+            ProgressBar.Value = 0;
+            ProgressPercentageTextBlock.Text = "0% completed";
         }
 
         private void InitializeTooltips()

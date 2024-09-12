@@ -19,6 +19,7 @@ namespace PROG7312_Ethekwini_Connect
         public MainWindow()
         {
             InitializeComponent();
+            InitializeTooltips();
         }
 
         private void ReportIssues_Click(object sender, RoutedEventArgs e)
@@ -39,6 +40,13 @@ namespace PROG7312_Ethekwini_Connect
         {
             //Service status coming soon
             MessageBox.Show("Service Request Status page is coming soon!", "Coming Soon", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void InitializeTooltips()
+        {
+            // Example tooltips for buttons
+            ServiceButton.ToolTip = "This page is not available but will be soon :)";
+            EventsButton.ToolTip = "This page is not available but will be soon :)";
         }
     }
 }
