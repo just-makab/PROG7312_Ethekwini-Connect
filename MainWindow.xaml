@@ -5,13 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG7312_Ethekwini_Connect"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+        
+    <Window.Background>
+        <ImageBrush ImageSource="/Glass Background.jpg"/>
+        <!-- Background image -->
+    </Window.Background>
+
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Dark Background.jpg"/>
-        </Grid.Background>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="200">
 
+            <!-- Report Issues Button -->
+            <Button x:Name="ReportIssuesButton" Width="250" Height="50" Margin="10" 
+                    Click="ReportIssues_Click" Background="#FFC8CF04" BorderBrush="#FF828524" BorderThickness="3,3,3,0"
+                    FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="3" CornerRadius="8">
+                            <TextBlock Text="REPORT ISSUES" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
+            <!-- Local Events and Announcements Button -->
+            <Button x:Name="EventsButton" Width="250" Height="50" Margin="10" Background="#FFC8CF04" BorderBrush="#FF828524" 
+                    BorderThickness="3" FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524" 
+                    Click="EventsButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="3" CornerRadius="8">
+                            <TextBlock Text="ANNOUNCEMENTS" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
+            <!-- Service Request Status Button -->
+            <Button x:Name="ServiceButton" Width="250" Height="50" Margin="10" Background="#FFC8CF04" BorderBrush="#FF828524" 
+                    BorderThickness="3" FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524" 
+                    Click="ServiceButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="3" CornerRadius="8">
+                            <TextBlock Text="SERVICE STATUS" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </StackPanel>
     </Grid>
 </Window>

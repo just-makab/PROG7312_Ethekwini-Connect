@@ -11,10 +11,12 @@
 
   <ItemGroup>
     <None Remove="Dark Background.jpg" />
+    <None Remove="Glass Background.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Dark Background.jpg" />
+    <Resource Include="Glass Background.jpg" />
   </ItemGroup>
 
 </Project>

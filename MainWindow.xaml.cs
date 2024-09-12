@@ -20,5 +20,25 @@ namespace PROG7312_Ethekwini_Connect
         {
             InitializeComponent();
         }
+
+        private void ReportIssues_Click(object sender, RoutedEventArgs e)
+        {
+            // Open the Report Issues form
+           // ReportIssuesWindow reportWindow = new ReportIssuesWindow();
+            //reportWindow.Show();
+            //this.Close();
+        }
+
+        private void EventsButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Events page Coming soon
+            MessageBox.Show("Local Events and Announcements page is coming soon!", "Coming Soon", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void ServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Service status coming soon
+            MessageBox.Show("Service Request Status page is coming soon!", "Coming Soon", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
