@@ -24,9 +24,9 @@ namespace PROG7312_Ethekwini_Connect
         private void ReportIssues_Click(object sender, RoutedEventArgs e)
         {
             // Open the Report Issues form
-           // ReportIssuesWindow reportWindow = new ReportIssuesWindow();
-            //reportWindow.Show();
-            //this.Close();
+           ReportIssuesWindow reportWindow = new ReportIssuesWindow();
+           reportWindow.Show();
+           this.Close();
         }
 
         private void EventsButton_Click(object sender, RoutedEventArgs e)
