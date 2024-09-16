@@ -7,24 +7,23 @@
         mc:Ignorable="d"
         Title="Home" Height="600" Width="900"
         WindowStartupLocation="CenterScreen">
-        
+
     <Window.Background>
         <ImageBrush ImageSource="/Glass Background.jpg"/>
-        <!-- Background image -->
     </Window.Background>
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="200">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="300">
 
             <!-- Report Issues Button -->
             <Button x:Name="ReportIssuesButton" Width="250" Height="50" Margin="10" 
-                    Click="ReportIssues_Click" Background="#FFC8CF04" BorderBrush="#FF828524" BorderThickness="3,3,3,0"
+                    Click="ReportIssues_Click" Background="#FFC8CF04" BorderBrush="#FF828524" BorderThickness="3"
                     FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="3" CornerRadius="8">
-                            <TextBlock Text="REPORT ISSUES" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            <TextBlock Text="REPORT A ISSUE" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
@@ -57,6 +56,41 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+
+            <Grid Width="250" Margin="0,10,0,0" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="125" />
+                    <ColumnDefinition Width="125" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Bug Button -->
+                <Button x:Name="BugButton" Grid.Column="0" Width="120" Height="50" Background="#FFC8CF04" BorderBrush="#FF828524" ToolTip="Submit a bug/Feedback on the app"  ToolTipService.InitialShowDelay="1000"
+                        BorderThickness="3" FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524" 
+                        Click="BugButton_Click" Margin="0,0,2,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="3" CornerRadius="8">
+                                <TextBlock Text="BUG" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!-- Settings Button -->
+                <Button x:Name="SettingsButton" Grid.Column="1" Width="120" Height="50" Background="#FFC8CF04" BorderBrush="#FF828524"
+                        BorderThickness="3" FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524" 
+                        Click="SettingsButton_Click" Margin="5,0,0,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="3" CornerRadius="8">
+                                <TextBlock Text="SETTINGS" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
 
         </StackPanel>
     </Grid>

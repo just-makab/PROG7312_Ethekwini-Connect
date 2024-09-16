@@ -47,6 +47,22 @@ namespace PROG7312_Ethekwini_Connect
             // Example tooltips for buttons
             ServiceButton.ToolTip = "This page is not available but will be soon :)";
             EventsButton.ToolTip = "This page is not available but will be soon :)";
+            BugButton.ToolTip = "Submit a bug/Feedback on the app";
+        }
+
+        private void BugButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Feedback Form
+            BugReportWindow bugReportWindow = new BugReportWindow();
+            bugReportWindow.Show();
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Settings Page
+            SettingsWindow SettingsWindow = new SettingsWindow();
+            SettingsWindow.Show();
+            this.Close ();
         }
     }
 }

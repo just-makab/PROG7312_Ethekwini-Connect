@@ -1,0 +1,84 @@
+﻿<Window x:Class="PROG7312_Ethekwini_Connect.BugReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Feedback Page" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Glass Background.jpg"/>
+    </Window.Background>
+
+    <Grid>
+        <!-- Centering content using a Grid with Rows and Columns -->
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Page Title -->
+            <TextBlock Text="Feedback Or Bug Report" FontSize="28" FontWeight="Bold" Foreground="White"
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <!-- Drop Down for Report Type -->
+            <ComboBox x:Name="ReportTypeComboBox" Width="250" Height="30" Margin="10"
+                      Grid.Row="1" Grid.Column="0">
+                <ComboBoxItem Content="BUG REPORT"/>
+                <ComboBoxItem Content="FEEDBACK REPORT"/>
+            </ComboBox>
+
+            <!-- ProgressBar -->
+            <StackPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+                <ProgressBar x:Name="ProgressBar" Height="30" Width="300" Minimum="0" Maximum="100" Value="0"/>
+                <TextBlock x:Name="ProgressPercentageTextBlock" Text="0% completed" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- TextBox for Feedback -->
+            <TextBox x:Name="FeedbackTextBox" Width="400" Height="200" Margin="10"
+                     Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top"
+                     TextChanged="FeedbackTextBox_TextChanged"/>
+
+            <!-- Submit Button -->
+            <Button x:Name="SubmitFeedbackButton" Width="250" Height="50" Margin="10"
+                    Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                    Click="SubmitFeedback_Click" Background="#FFC8CF04" BorderBrush="#FF828524" BorderThickness="3"
+                    FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="3" CornerRadius="8">
+                            <TextBlock Text="SUBMIT FEEDBACK" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Back Button -->
+            <Button x:Name="BackButton" Width="250" Height="50" Margin="10"
+                    Grid.Row="5" Grid.Column="0"
+                    Click="BackButton_Click" Background="#FFC8CF04" BorderBrush="#FF828524" BorderThickness="3"
+                    FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="3" CornerRadius="8">
+                            <TextBlock Text="BACK" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

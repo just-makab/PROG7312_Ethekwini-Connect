@@ -19,7 +19,8 @@ namespace PROG7312_Ethekwini_Connect
         {
             InitializeComponent();
             InitializeTooltips();
-           
+            ReportDataGrid.ItemsSource = ReportManager.Reports;
+
         }
 
         // Only update progress after new image is uploaded
@@ -65,11 +66,30 @@ namespace PROG7312_Ethekwini_Connect
 
                 reports.Add(report);
 
+                ReportManager.Reports.Add(report);
+
                 // Update the DataGrid
-                ReportDataGrid.ItemsSource = null; // Refresh
+                ReportDataGrid.ItemsSource = null;
                 ReportDataGrid.ItemsSource = reports;
 
-                MessageBox.Show("Thank you for your report! Please provide feedback on the reporting function.", "Feedback", MessageBoxButton.OK, MessageBoxImage.Information);
+                //Make Feedbacks Opitonal in settings
+                if (!Properties.Settings.Default.DisableFeedbackPrompt)
+                {
+                    // Show success message and ask for feedback
+                    var result = MessageBox.Show("Report added successfully. Would you like to give feedback on your experience?",
+                                             "Feedback Request",
+                                             MessageBoxButton.YesNo,
+                                             MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        // Open the feedback window
+                        BugReportWindow feedbackWindow = new BugReportWindow();
+                        feedbackWindow.Show();
+                    }
+
+                }
+
                 ClearForm();
                 UpdateProgressBar(); // Update progress
             }
@@ -171,16 +191,7 @@ namespace PROG7312_Ethekwini_Connect
             // Example tooltips for buttons
             AttachMedia.ToolTip = "Attach any relevant media to your report.";
             Submit.ToolTip = "Submit your report once all fields are filled.";
-            Back.ToolTip = "Return to the main menu.";
+            Back.ToolTip = "Back to the main menu.";
         }
-    }
-
-    public class Report
-    {
-        public string Title { get; set; }
-        public string Location { get; set; }
-        public string Category { get; set; }
-        public string Description { get; set; }
-        public string ImagePath { get; set; }
     }
 }
