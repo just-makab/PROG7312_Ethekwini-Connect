@@ -44,10 +44,9 @@ namespace PROG7312_Ethekwini_Connect
 
         private void InitializeTooltips()
         {
-            // Example tooltips for buttons
+            //tooltips for buttons
             ServiceButton.ToolTip = "This page is not available but will be soon :)";
             EventsButton.ToolTip = "This page is not available but will be soon :)";
-            BugButton.ToolTip = "Submit a bug/Feedback on the app";
         }
 
         private void BugButton_Click(object sender, RoutedEventArgs e)
