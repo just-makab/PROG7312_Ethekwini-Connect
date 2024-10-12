@@ -1,13 +1,16 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
+/***************************************************************************************
+*    Title: How to Use the Progress Bar in WPF for Long Running Tasks
+*    Author: Learn 2 Stop Hunger
+*   URL: https://youtu.be/K2rywTFAEIA?si=j8vRzeJZRcuPBeyJ
+***************************************************************************************/
 
 namespace PROG7312_Ethekwini_Connect
 {
@@ -58,7 +61,10 @@ namespace PROG7312_Ethekwini_Connect
                 var report = new Report
                 {
                     Title = Title.Text,
-                    Location = LocationTextBox.Text,
+                    Road = RoadTextBox.Text,
+                    Suburb = SuburbTextBox.Text,
+                    City = CityTextBox.Text,
+                    Province = ProvinceTextBox.Text,    
                     Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(),
                     Description = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text,
                     ImagePath = (ImagePreview.Source as BitmapImage)?.UriSource.ToString() // Store image path
@@ -111,7 +117,22 @@ namespace PROG7312_Ethekwini_Connect
             UpdateProgressBar();
         }
 
-        private void LocationTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void RoadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void CityTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void SuburbTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProgressBar();
+        }
+
+        private void ProvinceTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateProgressBar();
         }
@@ -132,17 +153,21 @@ namespace PROG7312_Ethekwini_Connect
         }
 
 
+
         private void UpdateProgressBar()
         {
             int filledFields = 0;
 
             if (!string.IsNullOrEmpty(Title.Text)) filledFields++;
-            if (!string.IsNullOrEmpty(LocationTextBox.Text)) filledFields++;
+            if (!string.IsNullOrEmpty(RoadTextBox.Text)) filledFields++;
+            if (!string.IsNullOrEmpty(SuburbTextBox.Text)) filledFields++;
+            if(!string.IsNullOrEmpty(CityTextBox.Text)) filledFields++; 
+            if(!string.IsNullOrEmpty(ProvinceTextBox.Text)) filledFields++; 
             if (CategoryComboBox.SelectedItem != null) filledFields++;
             if (!string.IsNullOrEmpty(new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text.Trim())) filledFields++;
             if (ImagePreview.Source !=  null) filledFields++;
 
-            double progress = (filledFields / 5.0) * 100;
+            double progress = (filledFields / 8.0) * 100;
             ProgressBar.Value = progress;
 
             ProgressBar.Foreground = new SolidColorBrush(InterpolateColor(Colors.Red, Colors.Green, progress / 100));
@@ -166,7 +191,10 @@ namespace PROG7312_Ethekwini_Connect
         {
             // Check if all fields are filled
             return !string.IsNullOrEmpty(Title.Text) &&
-                   !string.IsNullOrEmpty(LocationTextBox.Text) &&
+                   !string.IsNullOrEmpty(RoadTextBox.Text) &&
+                   !string.IsNullOrEmpty(SuburbTextBox.Text) &&
+                   !string.IsNullOrEmpty(CityTextBox.Text) &&
+                   !string.IsNullOrEmpty(ProvinceTextBox.Text) &&
                    CategoryComboBox.SelectedItem != null &&
                    !string.IsNullOrWhiteSpace(new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd).Text.Trim()) &&
                    ImagePreview.Source != null;
@@ -177,7 +205,10 @@ namespace PROG7312_Ethekwini_Connect
         {
             // Clear all fields
             Title.Clear();
-            LocationTextBox.Clear();
+            RoadTextBox.Clear();
+            SuburbTextBox.Clear();
+            CityTextBox.Clear();
+            ProvinceTextBox.Clear();
             CategoryComboBox.SelectedIndex = -1;
             DescriptionRichTextBox.Document.Blocks.Clear();
 

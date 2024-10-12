@@ -47,37 +47,61 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="550">
-            <!-- Report form -->
-            <TextBlock Text="REPORT AN ISSUE" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Foreground="White" FontFamily="Dubai"/>
+            <!-- Report form inside ScrollViewer -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="350">
+                <StackPanel>
+                    <TextBlock Text="REPORT AN ISSUE" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Foreground="White" FontFamily="Dubai"/>
 
-            <TextBlock Text="Title:" HorizontalAlignment="Center" Margin="0,0,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <TextBox Name="Title" Width="250" Height="30" TextChanged="Title_TextChanged" />
+                    <TextBlock Text="Title:" HorizontalAlignment="Center" Margin="0,0,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <TextBox Name="Title" Width="250" Height="30" TextChanged="Title_TextChanged" />
 
-            <TextBlock Text="Location:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <TextBox Name="LocationTextBox" Width="250" Height="30" TextChanged="LocationTextBox_TextChanged"/>
+                    <!-- Road -->
+                    <TextBlock Text="Road:" HorizontalAlignment="Center" Margin="0,5,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <TextBox Name="RoadTextBox" Width="250" Height="30" TextChanged="RoadTextBox_TextChanged"/>
 
-            <TextBlock Text="Category:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <ComboBox Name="CategoryComboBox" Width="250" Height="30" SelectionChanged="CategoryComboBox_SelectionChanged">
-                <ComboBoxItem Content="Electricity Faults"/>
-                <ComboBoxItem Content="Fraud and Corruption"/>
-                <ComboBoxItem Content="Refuse"/>
-                <ComboBoxItem Content="Roads"/>
-                <ComboBoxItem Content="Sanitation"/>
-                <ComboBoxItem Content="Utilities"/>
-                <ComboBoxItem Content="Water Leakages"/>
-                <ComboBoxItem Content="Water Outage"/>
-            </ComboBox>
+                    <!-- Suburb -->
+                    <TextBlock Text="Suburb:" HorizontalAlignment="Center" Margin="0,5,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <TextBox Name="SuburbTextBox" Width="250" Height="30" TextChanged="SuburbTextBox_TextChanged"/>
 
-            <TextBlock Text="Description:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <RichTextBox Name="DescriptionRichTextBox" Width="250" Height="60" TextChanged="DescriptionRichTextBox_TextChanged"/>
+                    <!-- City -->
+                    <TextBlock Text="City:" HorizontalAlignment="Center" Margin="0,5,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <TextBox Name="CityTextBox" Width="250" Height="30" TextChanged="CityTextBox_TextChanged"/>
 
-            <TextBlock Text="Attached Media:" HorizontalAlignment="Center" Margin="0,20,0,5" FontFamily="Dubai" FontWeight="Bold"/>
-            <Image Name="ImagePreview" Width="80" Height="70" Stretch="Uniform" Margin="0,0,0,5"  SourceUpdated="ImagePreview_SourceUpdated" />
+                    <!-- Province -->
+                    <TextBlock Text="Province:" HorizontalAlignment="Center" Margin="0,5,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <TextBox Name="ProvinceTextBox" Width="250" Height="30" TextChanged="ProvinceTextBox_TextChanged"/>
 
-            <Button x:Name="AttachMedia" Style="{StaticResource CustomButtonStyle}" Content="Attach Media" Margin="0,10,0,0" Click="AttachMedia_Click"  ToolTip="Attach any relevant media to your report." ToolTipService.InitialShowDelay="2000"/>
+                    <!-- Category Section -->
+                    <TextBlock Text="Category:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <ComboBox Name="CategoryComboBox" Width="250" Height="30" SelectionChanged="CategoryComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Electricity Faults"/>
+                        <ComboBoxItem Content="Fraud and Corruption"/>
+                        <ComboBoxItem Content="Refuse"/>
+                        <ComboBoxItem Content="Roads"/>
+                        <ComboBoxItem Content="Sanitation"/>
+                        <ComboBoxItem Content="Utilities"/>
+                        <ComboBoxItem Content="Water Leakages"/>
+                        <ComboBoxItem Content="Water Outage"/>
+                    </ComboBox>
 
-            <Button x:Name="Submit" Style="{StaticResource CustomButtonStyle}" Content="Submit" Click="Submit_Click"/>
+                    <!-- Description Section -->
+                    <TextBlock Text="Description:" HorizontalAlignment="Center" Margin="0,10,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <RichTextBox Name="DescriptionRichTextBox" Width="250" Height="60" TextChanged="DescriptionRichTextBox_TextChanged"/>
+
+                    <TextBlock Text="Attached Media:" HorizontalAlignment="Center" Margin="0,20,0,5" FontFamily="Dubai" FontWeight="Bold"/>
+                    <Image Name="ImagePreview" Width="80" Height="70" Stretch="Uniform" Margin="0,0,0,5" SourceUpdated="ImagePreview_SourceUpdated" />
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Buttons always visible -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="AttachMedia" Style="{StaticResource CustomButtonStyle}" Content="Attach Media" Margin="0,10,0,0" Click="AttachMedia_Click"  ToolTip="Attach any relevant media to your report." ToolTipService.InitialShowDelay="2000"/>
+
+                <Button x:Name="Submit" Style="{StaticResource CustomButtonStyle}" Content="Submit" Click="Submit_Click"/>
+            </StackPanel>
         </StackPanel>
+
 
         <!-- ProgressBar -->
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">

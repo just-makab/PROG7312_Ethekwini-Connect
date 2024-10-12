@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+
+/***************************************************************************************
+*    Title: C# Tutorial - Advance Custom MessageBox (Yes or No)
+*    Author: Blade Programming
+*    URL: https://youtu.be/oAvx12mx7zs?si=BvnUtzUGVQ3ADR0_
+***************************************************************************************/
+
 
 namespace PROG7312_Ethekwini_Connect
 {
