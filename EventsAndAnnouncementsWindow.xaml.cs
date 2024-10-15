@@ -59,6 +59,10 @@ namespace PROG7312_Ethekwini_Connect
         private List<EventActivity> activities;
         private PriorityQueue priorityQueue = new PriorityQueue();
 
+        private string currentSearchQuery = string.Empty;
+        private string currentCategory = "All Categories";
+        private DateTime? currentDate = null;
+
         public EventsAndAnnouncementsWindow()
         {
             InitializeComponent();
@@ -119,23 +123,45 @@ namespace PROG7312_Ethekwini_Connect
             isInitialized = true; // Page is now fully initialized
         }
 
+        // Filter results based on search, category, and date filters
+        private void FilterResults()
+        {
+            var filteredActivities = eventQueue.ToList();
+
+            // Apply date filter
+            if (currentDate.HasValue)
+            {
+                filteredActivities = filteredActivities
+                    .Where(activity => activity.Date.Date == currentDate.Value.Date)
+                    .ToList();
+            }
+
+            // Apply category filter
+            if (currentCategory != "All Categories")
+            {
+                filteredActivities = filteredActivities
+                    .Where(activity => activity.Category == currentCategory)
+                    .ToList();
+            }
+
+            // Apply search filter
+            if (!string.IsNullOrEmpty(currentSearchQuery))
+            {
+                filteredActivities = filteredActivities
+                    .Where(activity => activity.Title.ToLower().Contains(currentSearchQuery.ToLower()))
+                    .ToList();
+            }
+
+            // Update the UI with the filtered results
+            resultsListView.ItemsSource = filteredActivities;
+        }
+
+
         // Filter by Date
         private void OnDateSelectedChanged(object sender, RoutedEventArgs e)
         {
-            DateTime? selectedDate = datePicker.SelectedDate;
-            if (selectedDate.HasValue)
-            {
-                var filteredActivities = eventDictionary.Values
-                    .Where(activity => activity.Date.Date == selectedDate.Value.Date)
-                    .ToList();
-
-                resultsListView.ItemsSource = filteredActivities;
-            }
-            else
-            {
-                //Make sure all is shown when no date is selected
-                resultsListView.ItemsSource = eventQueue.ToList();
-            }
+            currentDate = datePicker.SelectedDate;
+            FilterResults();
         }
 
         // Filter by Category
@@ -146,36 +172,13 @@ namespace PROG7312_Ethekwini_Connect
                 return; // Skip category selection if not initialized
             }
 
-
-            // Check if the selected item is not null
             ComboBoxItem selectedCategory = (ComboBoxItem)categoryComboBox.SelectedItem;
-
-            // Default to an empty list of activities
-            List<EventActivity> filteredActivities = new List<EventActivity>();
-
-            // Ensure the selected category is not null
             if (selectedCategory != null)
             {
-                string category = selectedCategory.Content.ToString();
-
-                // Check if eventQueue is initialized and not null
-                if (eventQueue != null && eventQueue.Count > 0)
-                {
-                    // Filter activities based on the selected category
-                    filteredActivities = eventQueue
-                        .Where(activity => activity.Category == category || category == "All Categories")
-                        .ToList();
-                }
-            }
-            else
-            {
-                // If no category is selected, show all activities
-                filteredActivities = eventQueue.ToList();
+                currentCategory = selectedCategory.Content.ToString();
             }
 
-            // Update the DataGrid with the filtered activities or an empty list
-            //Category Filter deactivated due to null refrence excpetion when page is first run.
-            resultsListView.ItemsSource = filteredActivities.Count > 0 ? filteredActivities : new List<EventActivity>();
+            FilterResults();
         }
 
 
@@ -183,22 +186,11 @@ namespace PROG7312_Ethekwini_Connect
         // Search by Title
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchQuery = SearchTextBox.Text.ToLower();
-
-            var filteredEvents = eventQueue
-                .Where(activity => activity.Title.ToLower().Contains(searchQuery))
-                .ToList();
-
-            resultsListView.ItemsSource = filteredEvents.Count > 0 ? filteredEvents : null;
-
-            // Optional: Show a message in the UI if no results are found
-            if (filteredEvents.Count == 0)
-            {
-                MessageBox.Show("No event found with that title.");
-            }
+            currentSearchQuery = SearchTextBox.Text;
+            FilterResults();
         }
 
-        // Clear all filters
+        // Clear all Data
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             LoadPlaceholderData();
@@ -212,6 +204,16 @@ namespace PROG7312_Ethekwini_Connect
                 { "Emergency Alerts", 0 },
                 { "Health and Wellness", 0 }
             };
+
+            currentSearchQuery = string.Empty;
+            currentCategory = "All Categories";
+            currentDate = null;
+
+            SearchTextBox.Text = string.Empty;
+            datePicker.SelectedDate = null;
+            categoryComboBox.SelectedIndex = 0;
+
+            FilterResults();
         }
 
         //Display List based on users click history
