@@ -47,8 +47,9 @@ namespace PROG7312_Ethekwini_Connect
         private void InitializeTooltips()
         {
             //tooltips for buttons
+            ReportIssuesButton.ToolTip = "Report an issue you've seen in the community";
             ServiceButton.ToolTip = "This page is not available but will be soon :)";
-            EventsButton.ToolTip = "This page is not available but will be soon :)";
+            EventsButton.ToolTip = "Get to know whats Happening in your community";
         }
 
         private void BugButton_Click(object sender, RoutedEventArgs e)
