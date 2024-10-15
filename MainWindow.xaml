@@ -30,7 +30,7 @@
             </Button>
 
             <!-- Local Events and Announcements Button -->
-            <Button x:Name="EventsButton" Width="250" Height="50" Margin="10" Background="#FFC8CF04" BorderBrush="#FF828524" ToolTip="This page is not available but will be soon :)"  ToolTipService.InitialShowDelay="1000"
+            <Button x:Name="EventsButton" Width="250" Height="50" Margin="10" Background="#FFC8CF04" BorderBrush="#FF828524" ToolTip="See whats coming up in your community :)"  ToolTipService.InitialShowDelay="1000"
                     BorderThickness="3" FontFamily="Dubai" FontWeight="Bold" FontSize="16" Foreground="#FF828524" 
                     Click="EventsButton_Click">
                 <Button.Template>

@@ -32,8 +32,10 @@ namespace PROG7312_Ethekwini_Connect
 
         private void EventsButton_Click(object sender, RoutedEventArgs e)
         {
-            //Events page Coming soon
-            MessageBox.Show("Local Events and Announcements page is coming soon!", "Coming Soon", MessageBoxButton.OK, MessageBoxImage.Information);
+            //Open Events & Anouncments Page
+            EventsAndAnnouncementsWindow eventsWindow = new EventsAndAnnouncementsWindow();
+            eventsWindow.Show();
+            this.Close();
         }
 
         private void ServiceButton_Click(object sender, RoutedEventArgs e)
