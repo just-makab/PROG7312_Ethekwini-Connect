@@ -31,7 +31,7 @@ using System.Windows.Shapes;
 ***************************************************************************************/
 
 
-namespace PROG7312_Ethekwini_Connect
+namespace PROG7312_Ethekwini_Connect//
 {
     /// <summary>
     /// Interaction logic for EventsAndAnnouncementsWindow.xaml
