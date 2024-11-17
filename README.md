@@ -10,19 +10,26 @@
 - [ ] **Service Status**: View the progress of all your submitted reports.
 - [x] **User Accessibility**: Hovering over any button will provide a small explanation of what the button does.
 
+
 ## 📚 Table of Contents
 
-- [Getting Started](#getting-started)
-- [Installation](#installation)
+- [Getting Started](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#%EF%B8%8F-getting-started)
 - [User Manual](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#-user-manual)
-- [License](#license)
+    1. [Submitting an issue](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#1-submitting-an-issue)
+    2. [Reporting an In-App Bug/Providing Feedback](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#2-reporting-an-in-app-bugproviding-feedback)
+    3. [Opting Out of Report Requests and Clearing Reports](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#3-opting-out-of-report-requests-and-clearing-reports)
+    4. [Viewing Announcements](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#4-announcements)
+    5. [Viewing Service Status](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#5-service-status)
+- [License](https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#-license)
 
 ## 🛠️ Getting Started
 
-Instructions for setting up the project.
+> Instructions for setting up the project.
 
 ### Prerequisites
+
 - **Visual Studio/ Visual Studio Code**
+- **Windows 10 or later***
 
 ### Installation
 1. Clone the repo:
@@ -47,7 +54,7 @@ Instructions for setting up the project.
 
 ### 2. Reporting an In-App Bug/Providing Feedback
 
-- This can be done after submitting a report, but it can also be done with the following method:
+>This can be done after submitting a report, but it can also be done with the following method:
 
 1. From the Home screen, click on "BUG" to be navigated to the Feedback/bug report page.
 2. Select whether your report will be a Bug report or a Feedback report from the dropdown list.
@@ -56,17 +63,17 @@ Instructions for setting up the project.
 
 ### 3. Opting Out of Report Requests and Clearing Reports
 
-- This can all be done within the settings page.
+> This can all be done within the settings page.
 
 1. Click on "SETTINGS" from within the Home screen.
 2. Once here, you'll see 2 options and a save settings button:
-  - Option 1 is the feedback prompt. Clicking this will prevent the Feedback Prompt at the end of each report from popping up.
+  - Option 1 is the feedback prompt. Clicking this will prevent the Feedback Prompt from appearing at the end of each report.
   - Option 2 is the clear reports button. Clicking this button will permanently delete all your reports.
-3. Once your changes have been implemented, click on "SAVE" to apply the changes.
+3. Once your changes have been implemented, click "SAVE" to apply the changes.
 
 ### 4. Announcements
 
-- This page allows you to see what your community has to offer, all from one place.
+> This page allows you to see what your community has to offer, all from one place.
 
 1. From the home page, click on the Announcements button in order to be navigated to the announcements page.
    - Once here, you'll be able to view all the activities your community has to offer.
@@ -76,7 +83,7 @@ Instructions for setting up the project.
 
 ### 5. Service Status
 
-- This page is currently unavailable. Clicking on its button will notify the user.
+> This page is currently unavailable. Clicking on its button will notify the user.
 
 ## 📄 License
 
