@@ -8,7 +8,7 @@
 - [x] **Report an Issue**: An easy way to quickly report any issues you see in your community.
 - [x] **Announcements**: View any upcoming events you might want to participate in in your community.
 - [ ] **Service Status**: View the progress of all your submitted reports.
-- [x] **User Accessibility**: Hovering over any button will provide a small explanation of what the button does
+- [x] **User Accessibility**: Hovering over any button will provide a small explanation of what the button does*.
 
 ## 📚 Table of Contents
 
