@@ -12,7 +12,7 @@
 
 ## 📚 Table of Contents
 
-- [Getting Started](#getting-started)
+- [Getting Started]((https://github.com/just-makab/PROG7312_Ethekwini-Connect/blob/master/README.md#%EF%B8%8F-getting-started))
 - [Installation](#installation)
 - [User Manual](#usermanual)
 - [License](#license)
