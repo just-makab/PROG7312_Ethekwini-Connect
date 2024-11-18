@@ -54,7 +54,7 @@ namespace PROG7312_Ethekwini_Connect
         //Hashset used for categories becuase it ensures each categpry is unique
         private HashSet<string> categorySet = new HashSet<string>();
         private SortedSet<DateTime> dateSet = new SortedSet<DateTime>();
-        private SortedSet<EventActivity> eventQueue;
+        private HashSet<EventActivity> eventQueue;
         //Prioriy queue and activites to manage recomendtion feature
         private List<EventActivity> activities;
         private PriorityQueue priorityQueue = new PriorityQueue();
@@ -73,7 +73,7 @@ namespace PROG7312_Ethekwini_Connect
 
         private void LoadPlaceholderData()
         {   
-             eventQueue = new SortedSet<EventActivity>
+             eventQueue = new HashSet<EventActivity>
              {
                 // Community Events
                 new EventActivity { Title = "Neighborhood Watch Meeting", Date = DateTime.Now.AddDays(3), Category = "Community", Description = "Discuss safety measures with your neighbors." },

@@ -1,0 +1,108 @@
+﻿<Window x:Class="PROG7312_Ethekwini_Connect.ServiceRequestStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG7312_Ethekwini_Connect"
+        mc:Ignorable="d"
+        Title="ServiceRequestStatus" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Glass Background.jpg"/>
+    </Window.Background>
+
+    <Window.Resources>
+        <Style x:Key="GreenButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="#FFC8CF04"/>
+            <Setter Property="BorderBrush" Value="#FF828524"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="FontFamily" Value="Dubai"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#FF828524"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="3" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title Row -->
+            <RowDefinition Height="2*"/>
+            <!-- Search Row -->
+            <RowDefinition Height="0.3*"/>
+            <!-- Results Row -->
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Search Bar -->
+        <!-- URL: https://stackoverflow.com/questions/833943/watermark-hint-placeholder-text-in-textbox/836463#836463 -->
+        <TextBox Grid.Row="0" Grid.Column="0"   Height="40" Width="300"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchTextBox" Margin="20,5,0,0" TextAlignment="Center" FontSize="15" FontFamily="Dubai Medium"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="135,0,0,0" Foreground="DarkGray" TextAlignment="Center" FontSize="20">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=SearchTextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <!-- Category Dropdown -->
+        <ComboBox  Grid.Row="0" Grid.Column="0"  x:Name="searchComboBox" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0,5,210,0">
+            <ComboBoxItem Content="Search by" IsSelected="True"/>
+            <ComboBoxItem Content="Search by ID"/>
+            <ComboBoxItem Content="earch by Title"/>
+            <ComboBoxItem Content="Search by Status"/>
+        </ComboBox>
+
+        <Button Grid.Row="0" Grid.Column="0"  Content="SEARCH" Style="{StaticResource GreenButtonStyle}" Margin="0,5,20,0" Click="SearchButton_Click" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <Button Grid.Row="0" Grid.Column="1"  Content="CLEAR" Style="{StaticResource GreenButtonStyle}" Margin="0,5,0,0" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Clear_Click"/>
+
+        <!-- Results ListView (placeholder) -->
+        <DataGrid x:Name="resultsListView" Grid.Row="1" Grid.Column="0" Margin="20,20,20,5" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Request ID" Binding="{Binding RequestID}" Width="0.5*"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}"  Width="1*"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding RequestedDate}"  Width="1*"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"  Width="1*"/>
+                <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"  Width="0.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button   Content="Sort by Date" Style="{StaticResource GreenButtonStyle}" Margin="0,20,0,0" Click="SortByDate_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button   Content="Sort by Priority" Style="{StaticResource GreenButtonStyle}" Margin="0,20,0,0" Click="SortByPriority_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <Button Grid.Row="3" Grid.Column="1"  Content="Back" Style="{StaticResource GreenButtonStyle}" Margin="0,0,0,20" Click="BackButton_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Service Request Status Distribution" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               FontSize="20" FontWeight="Bold" Margin="0,5,0,5"/>
+
+        <Canvas x:Name="graph" Grid.Row="3" Grid.Column="0" Width="680" Margin="20,10,20,10" Background="White"/>
+
+    </Grid>
+</Window>

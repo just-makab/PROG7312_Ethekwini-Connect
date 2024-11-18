@@ -40,15 +40,17 @@ namespace PROG7312_Ethekwini_Connect
 
         private void ServiceButton_Click(object sender, RoutedEventArgs e)
         {
-            //Service status coming soon
-            MessageBox.Show("Service Request Status page is coming soon!", "Coming Soon", MessageBoxButton.OK, MessageBoxImage.Information);
+            //Open Service Status Page
+            ServiceRequestStatus serviceWindow = new ServiceRequestStatus();
+            serviceWindow.Show();
+            this.Close();
         }
 
         private void InitializeTooltips()
         {
             //tooltips for buttons
             ReportIssuesButton.ToolTip = "Report an issue you've seen in the community";
-            ServiceButton.ToolTip = "This page is not available but will be soon :)";
+            ServiceButton.ToolTip = "See the status of your uploaded service requests";
             EventsButton.ToolTip = "Get to know whats Happening in your community";
         }
 
